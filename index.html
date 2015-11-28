@@ -1,51 +1,117 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html">
+<DOCTYPE html>
+<html>
 <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
     <title>Influx</title>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABoZ1PBsQIYdAyxGQcBoaboKOgPxKnrs0"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABoZ1PBsQIYdAyxGQcBoaboKOgPxKnrs0&signed_in=true&callback=initMap"
+            ></script>
     <script src="influx.js"></script>
-    <link rel="stylesheet" href="style.css"></head>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<div id='map-canvas'></div>
-<div class="info">
-    <form align="center"><br>
-        Destination:
-        <input type="text" id="destination">
-        <button onclick="calcRoute()">Calculate</button>
-    </form>
-    <div id="wrap">
-        <div id="left_col">
-            <h2 align="center">User 1: </h2>
-            <form align="center"><br>
-                Origin:
-                <input type="text" id="user1_origin">
-            </form>
-            <div align="center" class="dropdown">
-                <select class="transportation">
-                    <option value="Car">Car</option>
-                    <option value="TTC">Public Transport</option>
-                    <option value="Walk">Walking</option>
-                    <option value="Bike">Bike</option>
-                </select>
-            </div>
-        </div>
-        <div id="right_col">
-            <h2 align="center">User 2: </h2>
-            <form align="center"><br>
-                Origin:
-                <input type="text" id="user2_origin">
-            </form>
-            <div align="center" class="dropdown">
-                <select class="transportation">
-                    <option value="Car">Car</option>
-                    <option value="TTC">Public Transport</option>
-                    <option value="Walk">Walking</option>
-                    <option value="Bike">Bike</option>
-                </select>
-            </div>
-        </div>
-    </div>
-</div>
+<body onload="initMap()">
+<div id="floating-panel">
+    <table>
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td>You</td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <input type="text" id="start" placeholder="Location">
+                        </td>
+                    </tr>
+
+                    <tr class="hidden-transport-you">
+                        <td class="toggle-you">Transport
+                                <select>
+                                    <option value="DRIVING">Car</option>
+                                    <option value="BICYCLING">Bike</option>
+                                    <option value="TRANSIT">Transit</option>
+                                    <option value="WALKING">Walking</option>
+                                </select>
+                        </td>
+                    </tr>
+                    <tr class="hidden-row">
+
+                    </tr>
+                    <tr class="hidden-row">
+
+                    </tr>
+
+                    <tr id="dropdown-row-you" onclick="toggleVisibility('you')">
+                        <td>
+                            <div id="dropdown-down-you" class="hover toggle-you">&#x25BC</div>
+                        </td>
+                        <td>
+                            <div id="dropdown-up-you" class="hover toggle-you">&#x25B2</div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table>
+                    <tr>
+                        <td>Friend</td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <input type="text" id="friend" placeholder="Location">
+                        </td>
+                    </tr>
+
+                    <tr class="hidden-transport-friend">
+                        <td class="toggle-friend">Transport
+                            <select>
+                                <option value="DRIVING">Car</option>
+                                <option value="BICYCLING">Bike</option>
+                                <option value="TRANSIT">Transit</option>
+                                <option value="WALKING">Walking</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr id="dropdown-row-friend" onclick="toggleVisibility('friend')">
+                        <td>
+                            <div id="dropdown-down-friend" class="toggle-friend hover" >&#x25BC</div>
+                        </td>
+                        <td>
+                            <div id="dropdown-up-friend" class="toggle-friend hover" >&#x25B2</div>
+                        </td>
+                    </tr>
+
+                </table>
+            </td>
+            <td>
+                <table>
+                    <tr>
+                        <td>Destination</td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <input type="text" id="end" placeholder="Location" onkeypress="onChangeHandler(event)" >
+                        </td>
+                    </tr>
+
+                    <tr id="dropdown-row-destination" onclick="toggleVisibility('destination')">
+                        <td>
+                            <div id="dropdown-down-destination" class="hover toggle-destination">&#x25BC</div>
+                        </td>
+                        <td>
+                            <div id="dropdown-up-destination" class="hover toggle-destination">&#x25B2</div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+ </div>
+<div id="map"></div>
+
 </body>
 </html>
