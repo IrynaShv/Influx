@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Influx</title>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABoZ1PBsQIYdAyxGQcBoaboKOgPxKnrs0"></script>
@@ -7,6 +7,42 @@
     <link rel="stylesheet" href="style.css"></head>
 </head>
 <body>
-<div id='map-canvas' ></div>
+<div id='map-canvas'></div>
+<div class="info">
+    <form align="center"><br>
+        Destination:
+        <input type="text" id="destination">
+    </form>
+    <div id="wrap">
+        <div id="left_col">User 1:
+            <form><br>
+                Origin:
+                <input type="text" id="user1_origin">
+            </form>
+            <div class="dropdown">
+                <select class="transportation">
+                    <option value="Car">Car</option>
+                    <option value="TTC">Public Transport</option>
+                    <option value="Walk">Walking</option>
+                    <option value="Bike">Bike</option>
+                </select>
+            </div>
+        </div>
+        <div id="right_col">User 2:
+            <form><br>
+                Origin:
+                <input type="text" id="user2_origin">
+            </form>
+            <div class="dropdown">
+                <select class="transportation">
+                    <option value="Car">Car</option>
+                    <option value="TTC">Public Transport</option>
+                    <option value="Walk">Walking</option>
+                    <option value="Bike">Bike</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

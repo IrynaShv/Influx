@@ -2,4 +2,33 @@
 {
     width : 500px; 	/* map width */
     height: 500px;	/* map height */
+    margin: auto;
+}
+.info {
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 80px;
+}
+
+.dropdown {
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 80px;
+}
+
+#wrap {
+    width:600px;
+    margin:0 auto;
+}
+#left_col {
+    padding-top: 30px;
+    float:left;
+    width:300px;
+}
+#right_col {
+    padding-top: 30px;
+    float:right;
+    width:300px;
 }
